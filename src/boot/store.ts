@@ -9,8 +9,6 @@ declare module 'pinia' {
 }
 
 export default boot(({ Vue, app, store, router }) => {
-  Vue.config.devtools = false;
-
   const pinia = store as never as Pinia;
   pinia.use(() => ({ router }))
   Vue.use(PiniaVuePlugin);
