@@ -58,12 +58,12 @@ module.exports = configure(function (/* ctx */) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
 
-      transpile: true,
+      // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to t
-      transpileDependencies: [/@vue[\\/]devtools-api/, /pinia/, /axios/],
+      // transpileDependencies: [/@vue[\\/]devtools-api/, /pinia/, /axios/],
 
       // rtl: false, // https://v1.quasar.dev/options/rtl-support
       // preloadChunks: true,
