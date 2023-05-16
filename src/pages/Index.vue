@@ -14,15 +14,22 @@
 <script lang="ts">
 
 import { useCounterStore } from 'src/stores/counter';
-import { storeToRefs } from 'pinia';
-import { defineComponent } from 'vue';
+import { useSampleStore } from 'src/stores/sample';
+import { defineComponent, onMounted } from 'vue';
 
 export default defineComponent({
   name: 'PageIndex',
   setup() {
     const counterStore = useCounterStore();
-    const { count } = storeToRefs(counterStore);
-    const { increase } = counterStore;
+    const sampleStore = useSampleStore();
+
+    console.log(counterStore)
+    onMounted(() => {
+      sampleStore.test();
+    })
+
+    const { count, increase } = counterStore;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     return { count, increase };
   }
 });

@@ -1,20 +1,13 @@
-import axios, { AxiosInstance } from 'axios'
-import { Pinia } from 'pinia';
+import axios from 'axios'
 import { boot } from 'quasar/wrappers';
 import { apiKey } from 'src/composables/api';
-import { provide } from 'vue'
+import { Basket } from 'src/composables/basket';
 
-declare module 'pinia' {
-  interface PiniaCustomProperties {
-    api: AxiosInstance;
-  }
-}
+export default boot(({ app, store }) => {
+  const basket = store as never as Basket
+  const api = axios.create({ baseURL: 'https://pokeapi.co/api/v2/' });
 
-export default boot(({ store }) => {
-  const pinia = store as never as Pinia;
-
-  const api = axios.create({ baseURL: 'https://pokeapi.co/api/v2/' })
-
-  provide(apiKey, api)
-  pinia.use(() => ({ api }))
+  app.provide ||= {}
+  app.provide[apiKey as never] = api as never;
+  basket.api = api;
 });

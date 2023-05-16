@@ -1,16 +1,10 @@
-import { Pinia, PiniaVuePlugin } from 'pinia';
 import { boot } from 'quasar/wrappers';
-import VueRouter from 'vue-router';
+import { basketKey, Basket } from 'src/composables/basket';
 
-declare module 'pinia' {
-  interface PiniaCustomProperties {
-    router: VueRouter;
-  }
-}
+export default boot(({ app, store, router }) => {
+  const basket = store as never as Basket;
+  basket.router = router;
 
-export default boot(({ Vue, app, store, router }) => {
-  const pinia = store as never as Pinia;
-  pinia.use(() => ({ router }))
-  Vue.use(PiniaVuePlugin);
-  app.pinia = pinia;
+  app.provide ||= {}
+  app.provide[basketKey as never] = basket as never;
 });

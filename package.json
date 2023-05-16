@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@vueuse/core": "^10.1.2",
     "axios": "^1.4.0",
     "core-js": "^3.6.5",
-    "pinia": "^2.0.36",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },
@@ -30,7 +30,6 @@
     "prettier": "^2.5.1"
   },
   "browserslist": [
-    "ie >= 11",
     "last 10 Chrome versions",
     "last 10 Firefox versions",
     "last 4 Edge versions",
@@ -39,7 +38,8 @@
     "last 8 ChromeAndroid versions",
     "last 8 FirefoxAndroid versions",
     "last 10 iOS versions",
-    "last 5 Opera versions"
+    "last 5 Opera versions",
+    "ie >= 11"
   ],
   "engines": {
     "node": ">= 10.18.1",

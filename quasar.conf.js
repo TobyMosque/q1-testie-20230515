@@ -33,6 +33,7 @@ module.exports = configure(function (/* ctx */) {
       'store',
       'api',
       'i18n',
+      'sample',
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -58,12 +59,12 @@ module.exports = configure(function (/* ctx */) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
 
-      // transpile: false,
+      transpile: true,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to t
-      // transpileDependencies: [/@vue[\\/]devtools-api/, /pinia/, /axios/],
+      transpileDependencies: ['axios', '@vueuse/core'],
 
       // rtl: false, // https://v1.quasar.dev/options/rtl-support
       // preloadChunks: true,
@@ -77,6 +78,10 @@ module.exports = configure(function (/* ctx */) {
       // https://v1.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       devtool: 'none',
+      extendWebpack (cfg, { isServer, isClient }) {
+        // cfg.target = 'es5'
+        // cfg.externals.pinia = 'pinia';
+      }
       // chainWebpack (/* chain */) {}
     },
 

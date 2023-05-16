@@ -1,19 +1,21 @@
-import { defineStore } from 'pinia';
+import { Basket } from 'src/composables/basket';
 import { ref } from 'vue';
+import { defineState } from '.';
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0);
-
-  function increase(this: CounterStore) {
-    console.log(this);
-    if (typeof count.value === 'number') {
-      count.value += 1;
+export function useCounterStore(basket?: Basket) {
+  const state = defineState('counter', basket, () => {
+    const count = ref(0);
+    return {
+      count
     }
+  });
+
+  function increase() {
+    state.count.value += 1;
   }
 
   return {
-    count,
+    ...state,
     increase
   }
-})
-export type CounterStore = ReturnType<typeof useCounterStore>
+}
