@@ -13,19 +13,25 @@
 
 <script lang="ts">
 
+import { useApi } from 'src/composables/api';
 import { useCounterStore } from 'src/stores/counter';
-import { useSampleStore } from 'src/stores/sample';
+import { useTestStore } from 'src/stores/test';
 import { defineComponent, onMounted } from 'vue';
+import { useRoute, useRouter } from 'src/composables/router';
 
 export default defineComponent({
   name: 'PageIndex',
   setup() {
-    const counterStore = useCounterStore();
-    const sampleStore = useSampleStore();
+    const api = useApi();
+    const router = useRouter();
+    const route = useRoute();
+    console.log('page', { api, router, route })
 
-    console.log(counterStore)
+    const counterStore = useCounterStore();
+    const sampleStore = useTestStore();
+
     onMounted(() => {
-      sampleStore.test();
+      sampleStore.test('store.page');
     })
 
     const { count, increase } = counterStore;

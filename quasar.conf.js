@@ -33,7 +33,7 @@ module.exports = configure(function (/* ctx */) {
       'store',
       'api',
       'i18n',
-      'sample',
+      'test',
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
